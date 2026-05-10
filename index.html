@@ -4,348 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Упрощенное гражданство РФ | РМС Консалтинг Сервис</title>
-    <!-- Google Fonts + Bootstrap Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* ---------- ГЛОБАЛЬНЫЕ СТИЛИ ---------- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #ffffff;
-            color: #1E2A3E;
-            line-height: 1.5;
-            scroll-behavior: smooth;
-            padding-top: 88px;
-        }
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-        .blue-text {
-            color: #155dfc;
-        }
-        .btn-primary {
-            background-color: #155dfc;
-            border: none;
-            padding: 12px 32px;
-            font-weight: 600;
-            font-size: 1rem;
-            border-radius: 60px;
-            transition: all 0.25s ease;
-            box-shadow: 0 6px 14px rgba(21, 93, 252, 0.2);
-        }
-        .btn-primary:hover {
-            background-color: #0e4ad0;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(21, 93, 252, 0.25);
-        }
-        .btn-outline-primary-custom {
-            border: 1.5px solid #155dfc;
-            background: transparent;
-            color: #155dfc;
-            border-radius: 60px;
-            padding: 12px 28px;
-            font-weight: 600;
-            transition: 0.2s;
-        }
-        .btn-outline-primary-custom:hover {
-            background: #155dfc;
-            color: white;
-        }
-        /* Языковой переключатель */
-        .lang-switcher {
-            display: flex;
-            gap: 8px;
-            background: #f0f4fa;
-            padding: 4px;
-            border-radius: 60px;
-        }
-        .lang-btn {
-            background: transparent;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.2s;
-            color: #4a5a72;
-        }
-        .lang-btn.active {
-            background: #155dfc;
-            color: white;
-            box-shadow: 0 2px 8px rgba(21,93,252,0.2);
-        }
-        /* Заголовки */
-        h1 {
-            font-size: 2.6rem;
-            font-weight: 800;
-            line-height: 1.25;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 1.2rem;
-            letter-spacing: -0.01em;
-        }
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-        /* Шапка фикс */
-        .header-top {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: white;
-            border-bottom: 1px solid #eef2f8;
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-            padding: 14px 0;
-            z-index: 1030;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .logo img {
-            height: 48px;
-            width: auto;
-            border-radius: 10px;
-        }
-        /* Hero */
-        .hero-landing {
-            background: linear-gradient(135deg, #F9FbFF 0%, #ffffff 100%);
-            padding: 70px 0 60px;
-            border-bottom: 1px solid #eef2f8;
-            margin-bottom: 80px;
-        }
-        .hero-badge {
-            background: #eef4ff;
-            display: inline-block;
-            padding: 6px 20px;
-            border-radius: 60px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            color: #155dfc;
-            margin-bottom: 1.5rem;
-        }
-        .hero-sub {
-            font-size: 1.2rem;
-            color: #4a5a72;
-            margin-bottom: 2rem;
-            max-width: 90%;
-        }
-        .hero-image-wrapper {
-            position: relative;
-            display: inline-block;
-            text-align: center;
-        }
-        .hero-image {
-            border-radius: 48px;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-        .expert-label {
-            position: absolute;
-            bottom: 25px;
-            right: -20px;
-            background: #155dfc;
-            color: white;
-            padding: 8px 18px;
-            border-radius: 60px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(21,93,252,0.3);
-            z-index: 6;
-        }
-        .expert-label::before {
-            content: '';
-            position: absolute;
-            left: -12px;
-            top: 50%;
-            transform: translateY(-50%);
-            border-style: solid;
-            border-width: 6px 12px 6px 0;
-            border-color: transparent #155dfc transparent transparent;
-        }
-        @media (max-width: 992px) {
-            .expert-label { font-size: 0.7rem; padding: 5px 12px; right: -10px; bottom: 15px; white-space: nowrap; }
-        }
-        /* Преимущества */
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 40px;
-            margin: 90px 0 90px;
-        }
-        .benefit-card {
-            background: #FFFFFF;
-            border-radius: 32px;
-            padding: 36px 24px;
-            text-align: center;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-            border: 1px solid #edf2f7;
-        }
-        .benefit-card i {
-            font-size: 48px;
-            color: #155dfc;
-            margin-bottom: 24px;
-        }
-        /* Формы */
-        .form-section {
-            background: #F9FbFF;
-            border-radius: 48px;
-            padding: 64px 56px;
-            margin: 100px 0 120px;
-            border: 1px solid #eef2f8;
-        }
-        .quiz-section {
-            background: white;
-            border-radius: 48px;
-            padding: 64px 56px;
-            margin: 100px 0 120px;
-            border: 1px solid #eef2f8;
-            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.05);
-        }
-        .category-grid {
-            margin: 90px 0 80px;
-        }
-        .category-card {
-            display: flex;
-            gap: 22px;
-            background: #FCFDFF;
-            border-radius: 28px;
-            padding: 28px;
-            border: 1px solid #edf2f9;
-            height: 100%;
-        }
-        /* Отзывы 4 колонки */
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin: 70px 0 50px;
-        }
-        .review-card {
-            background: #ffffff;
-            border-radius: 28px;
-            padding: 28px 24px;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
-            border: 1px solid #edf2f7;
-        }
-        .review-card i.bi-quote {
-            font-size: 2rem;
-            color: #155dfc;
-            opacity: 0.3;
-            margin-bottom: 16px;
-            display: inline-block;
-        }
-        /* Квиз */
-        .quiz-question {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-        }
-        .quiz-option {
-            background: #ffffff;
-            border: 1px solid #e2e8f0;
-            border-radius: 80px;
-            padding: 14px 24px;
-            margin-bottom: 14px;
-            cursor: pointer;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-        .quiz-option.selected {
-            background: #eef4ff;
-            border-color: #155dfc;
-        }
-        .result-message {
-            background: #e9f4f8;
-            padding: 32px;
-            border-radius: 40px;
-            text-align: center;
-        }
-        /* Футер */
-        .footer {
-            background: #0f1a2c;
-            color: #cddcf0;
-            padding: 56px 0 40px;
-            margin-top: 90px;
-            border-top: 1px solid #1f2e46;
-        }
-        .footer a {
-            color: #ffffff;
-            text-decoration: none;
-            opacity: 0.85;
-        }
-        .footer-links {
-            display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
-        }
-        .scroll-soc-media {
-            position: fixed;
-            bottom: 130px;
-            right: 24px;
-            z-index: 99;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-        .scroll-soc-media .item a {
-            background: #fff;
-            display: flex;
-            width: 52px;
-            height: 52px;
-            border-radius: 30px;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 18px rgba(0,0,0,0.12);
-        }
-        #scrollToTop {
-            position: fixed;
-            bottom: 40px;
-            right: 24px;
-            background: #155dfc;
-            border: none;
-            border-radius: 40px;
-            width: 52px;
-            height: 52px;
-            color: white;
-            font-size: 28px;
-            z-index: 99;
-            cursor: pointer;
-        }
-        @media (max-width: 1100px) {
-            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            body { padding-top: 75px; }
-            h1 { font-size: 1.8rem; }
-            .form-section, .quiz-section { padding: 32px 24px; margin: 50px 0; }
-            .reviews-grid { grid-template-columns: 1fr; }
-            .footer-links { flex-direction: column; gap: 12px; }
-            .lang-btn { padding: 5px 12px; font-size: 0.75rem; }
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #1E2A3E; line-height: 1.5; scroll-behavior: smooth; padding-top: 88px; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .blue-text { color: #155dfc; }
+        .btn-primary { background-color: #155dfc; border: none; padding: 12px 32px; font-weight: 600; font-size: 1rem; border-radius: 60px; transition: all 0.25s ease; box-shadow: 0 6px 14px rgba(21, 93, 252, 0.2); }
+        .btn-primary:hover { background-color: #0e4ad0; transform: translateY(-2px); }
+        .btn-outline-primary-custom { border: 1.5px solid #155dfc; background: transparent; color: #155dfc; border-radius: 60px; padding: 12px 28px; font-weight: 600; transition: 0.2s; }
+        .btn-outline-primary-custom:hover { background: #155dfc; color: white; }
+        .lang-switcher { display: flex; gap: 8px; background: #f0f4fa; padding: 4px; border-radius: 60px; }
+        .lang-btn { background: transparent; border: none; padding: 8px 16px; border-radius: 40px; font-weight: 600; font-size: 0.85rem; cursor: pointer; transition: 0.2s; color: #4a5a72; }
+        .lang-btn.active { background: #155dfc; color: white; }
+        h1 { font-size: 2.6rem; font-weight: 800; line-height: 1.25; margin-bottom: 1.5rem; letter-spacing: -0.02em; }
+        h2 { font-size: 2.2rem; font-weight: 700; margin-bottom: 1.2rem; }
+        .header-top { position: fixed; top: 0; left: 0; width: 100%; background: white; border-bottom: 1px solid #eef2f8; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03); padding: 14px 0; z-index: 1030; }
+        .logo { display: flex; align-items: center; gap: 14px; }
+        .logo img { height: 48px; width: auto; border-radius: 10px; }
+        .hero-landing { background: linear-gradient(135deg, #F9FbFF 0%, #ffffff 100%); padding: 70px 0 60px; border-bottom: 1px solid #eef2f8; margin-bottom: 80px; }
+        .hero-badge { background: #eef4ff; display: inline-block; padding: 6px 20px; border-radius: 60px; font-weight: 600; font-size: 0.85rem; color: #155dfc; margin-bottom: 1.5rem; }
+        .hero-sub { font-size: 1.2rem; color: #4a5a72; margin-bottom: 2rem; max-width: 90%; }
+        .hero-image-wrapper { position: relative; display: inline-block; text-align: center; }
+        .hero-image { border-radius: 48px; box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1); max-width: 100%; height: auto; display: block; }
+        .expert-label { position: absolute; bottom: 25px; right: -20px; background: #155dfc; color: white; padding: 8px 18px; border-radius: 60px; font-size: 0.85rem; font-weight: 600; white-space: nowrap; box-shadow: 0 4px 12px rgba(21,93,252,0.3); }
+        .expert-label::before { content: ''; position: absolute; left: -12px; top: 50%; transform: translateY(-50%); border-style: solid; border-width: 6px 12px 6px 0; border-color: transparent #155dfc transparent transparent; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px; margin: 90px 0 90px; }
+        .benefit-card { background: #FFFFFF; border-radius: 32px; padding: 36px 24px; text-align: center; box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04); border: 1px solid #edf2f7; }
+        .benefit-card i { font-size: 48px; color: #155dfc; margin-bottom: 24px; }
+        .form-section { background: #F9FbFF; border-radius: 48px; padding: 64px 56px; margin: 100px 0 120px; border: 1px solid #eef2f8; }
+        .quiz-section { background: white; border-radius: 48px; padding: 64px 56px; margin: 100px 0 120px; border: 1px solid #eef2f8; box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.05); }
+        .category-card { display: flex; gap: 22px; background: #FCFDFF; border-radius: 28px; padding: 28px; border: 1px solid #edf2f9; height: 100%; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 70px 0 50px; }
+        .review-card { background: #ffffff; border-radius: 28px; padding: 28px 24px; box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04); border: 1px solid #edf2f7; }
+        .review-card i.bi-quote { font-size: 2rem; color: #155dfc; opacity: 0.3; margin-bottom: 16px; display: inline-block; }
+        .quiz-question { font-size: 1.8rem; font-weight: 700; margin-bottom: 2rem; }
+        .quiz-option { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 80px; padding: 14px 24px; margin-bottom: 14px; cursor: pointer; transition: 0.2s; display: flex; align-items: center; gap: 14px; }
+        .quiz-option.selected { background: #eef4ff; border-color: #155dfc; }
+        .result-message { background: #e9f4f8; padding: 32px; border-radius: 40px; text-align: center; }
+        .footer { background: #0f1a2c; color: #cddcf0; padding: 56px 0 40px; margin-top: 90px; border-top: 1px solid #1f2e46; }
+        .footer-links { display: flex; gap: 32px; flex-wrap: wrap; }
+        .scroll-soc-media { position: fixed; bottom: 130px; right: 24px; z-index: 99; display: flex; flex-direction: column; gap: 12px; }
+        .scroll-soc-media .item a { background: #fff; display: flex; width: 52px; height: 52px; border-radius: 30px; align-items: center; justify-content: center; box-shadow: 0 8px 18px rgba(0,0,0,0.12); }
+        #scrollToTop { position: fixed; bottom: 40px; right: 24px; background: #155dfc; border: none; border-radius: 40px; width: 52px; height: 52px; color: white; font-size: 28px; z-index: 99; cursor: pointer; }
+        @media (max-width: 1100px) { .reviews-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { body { padding-top: 75px; } h1 { font-size: 1.8rem; } .form-section, .quiz-section { padding: 32px 24px; margin: 50px 0; } .reviews-grid { grid-template-columns: 1fr; } .expert-label { font-size: 0.65rem; padding: 5px 12px; right: -10px; bottom: 15px; white-space: nowrap; } }
     </style>
 </head>
 <body>
@@ -356,14 +61,11 @@
 </div>
 <button id="scrollToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up-short"></i></button>
 
-<!-- Хедер: только лого + кнопка + переключатель языков (без дублирования названия) -->
 <header>
     <div class="header-top">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
-                <div class="logo">
-                    <img src="logo.png" alt="РМС Консалтинг Сервис">
-                </div>
+                <div class="logo"><img src="logo.png" alt="РМС Консалтинг Сервис"></div>
                 <div class="d-flex align-items-center gap-3">
                     <div class="lang-switcher">
                         <button class="lang-btn active" data-lang="ru">RU</button>
@@ -378,7 +80,6 @@
 </header>
 
 <main>
-    <!-- Hero блок -->
     <div class="hero-landing">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -402,16 +103,12 @@
     </div>
 
     <div class="container">
-        <!-- Преимущества -->
         <div style="margin: 20px 0 10px;">
             <h2 class="text-center" id="benefitsTitle">Почему <span class="blue-text">упрощённое гражданство</span> доступно уже сейчас</h2>
             <p class="text-center text-secondary mb-5" id="benefitsSub">На основании Постановления №169 и Указа Президента №962</p>
         </div>
-        <div class="benefits-grid" id="benefitsGrid">
-            <!-- динамически через js -->
-        </div>
+        <div class="benefits-grid" id="benefitsGrid"></div>
 
-        <!-- БЫСТРАЯ ЗАЯВКА -->
         <div id="quickForm" class="form-section">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -426,16 +123,16 @@
                 <div class="col-md-6">
                     <form id="leadForm" action="#" method="post">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Ваше имя *" id="inputName" required>
+                            <input type="text" class="form-control" name="name" id="inputName" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control" name="phone" placeholder="Номер телефона (WhatsApp/Telegram) *" id="inputPhone" required>
+                            <input type="tel" class="form-control" name="phone" id="inputPhone" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="E-mail" id="inputEmail">
+                            <input type="email" class="form-control" name="email" id="inputEmail">
                         </div>
                         <div class="mb-4">
-                            <textarea class="form-control" rows="2" name="message" placeholder="Какое у вас сейчас гражданство?" id="inputMessage"></textarea>
+                            <textarea class="form-control" rows="2" name="message" id="inputMessage"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 py-3 fw-semibold" id="submitFormBtn">Получить консультацию эксперта →</button>
                         <div class="mt-3 small text-secondary text-center"><a href="#" id="privacyLink">Политика конфиденциальности</a></div>
@@ -444,7 +141,6 @@
             </div>
         </div>
 
-        <!-- КВИЗ блок -->
         <div id="quizFormBlock" class="quiz-section">
             <div class="text-center mb-4">
                 <span class="hero-badge bg-light" style="background:#eef4ff;" id="quizBadge">🎯 Персональный помощник</span>
@@ -457,13 +153,11 @@
             </div>
         </div>
 
-        <!-- Категории -->
         <div class="category-grid">
             <h2 class="text-center mb-5" id="categoryTitle">Кто может претендовать на <span class="blue-text">упрощённое гражданство РФ</span></h2>
             <div class="row g-4" id="categoryGrid"></div>
         </div>
 
-        <!-- Отзывы 4 шт -->
         <div style="margin: 90px 0 60px;">
             <h2 class="text-center" id="reviewsTitle">Реальные <span class="blue-text">истории наших клиентов</span></h2>
             <p class="text-center text-secondary mb-5" id="reviewsSub">Более 350 семей уже переехали в РФ с нашей помощью</p>
@@ -482,9 +176,7 @@
     <div class="container">
         <div class="row gy-4 align-items-start">
             <div class="col-md-5">
-                <div class="logo mb-3" style="filter: brightness(0) invert(1);">
-                    <img src="logo.png" alt="РМС" style="height: 48px; width: auto;">
-                </div>
+                <div class="logo mb-3" style="filter: brightness(0) invert(1);"><img src="logo.png" alt="РМС" style="height: 48px; width: auto;"></div>
                 <p class="small opacity-75" id="footerDesc">Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.</p>
             </div>
             <div class="col-md-4">
@@ -507,7 +199,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // ========== МУЛЬТИЯЗЫЧНЫЙ КОНТЕНТ ==========
+    // ========== ПОЛНЫЙ МУЛЬТИЯЗЫЧНЫЙ КОНТЕНТ ==========
     const translations = {
         ru: {
             heroBadge: "⚡ Ускоренная программа 2025–2026",
@@ -526,6 +218,11 @@
             formLi1: "<strong>Оценка шансов</strong> — 15 минут",
             formLi2: "<strong>Помощь в сборе архивных справок</strong> (даже из закрытых архивов)",
             formLi3: "<strong>Более 350+ успешных кейсов</strong> по всей Европе и СНГ",
+            formNamePlaceholder: "Ваше имя *",
+            formPhonePlaceholder: "Номер телефона (WhatsApp/Telegram) *",
+            formEmailPlaceholder: "E-mail",
+            formMessagePlaceholder: "Какое у вас сейчас гражданство?",
+            submitBtn: "Получить консультацию эксперта →",
             quizBadge: "🎯 Персональный помощник",
             quizTitle: "Ответьте на 5 вопросов — получите <span class='blue-text'>рекомендацию и скидку 10%</span>",
             quizDesc: "Это займёт меньше минуты, результат поможет эксперту подготовить стратегию",
@@ -550,9 +247,21 @@
             ctaDesc: "Оставьте заявку и получите индивидуальный план действий от эксперта по миграционному праву",
             ctaBtn: "Записаться на консультацию",
             footerDesc: "Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.",
+            quizQuestions: [
+                { text: "Ваше текущее гражданство?", options: ["Германия / Австрия / Швейцария", "Казахстан / Беларусь / Украина", "США / Канада / Франция", "Другое"] },
+                { text: "Есть ли у вас или родителей/дедушек российские корни?", options: ["Да, родились в РСФСР/РФ", "Да, бабушка/дедушка из СССР", "Нет, но супруг(а) гражданин РФ", "Нет никакой связи"] },
+                { text: "Планируете переезд в РФ в ближайшие полгода?", options: ["Уже живу в РФ", "Да, активно планирую", "Рассматриваю вариант", "Пока не определился"] },
+                { text: "Были ли ранее отказы в РВП/ВНЖ/гражданстве?", options: ["Да, был отказ", "Нет, не обращался", "Обращался, но забрал документы", "В процессе"] },
+                { text: "Ваш семейный статус?", options: ["Женат/замужем за гражданином РФ", "Женат/замужем за иностранцем", "Есть дети-граждане РФ", "Холост/не замужем"] }
+            ],
             submitAlert: (name) => `Спасибо, ${name}! Наш специалист свяжется с вами в течение 15 минут.`,
             quizResultHigh: "🎉 У вас отличные шансы! Вы подходите под упрощённую программу. Заполните заявку, и мы подготовим документы.",
-            quizResultLow: "📌 Даже при сложной ситуации мы поможем. Оставьте заявку для персонального анализа от юриста."
+            quizResultLow: "📌 Даже при сложной ситуации мы поможем. Оставьте заявку для персонального анализа от юриста.",
+            quizBack: "◀ Назад",
+            quizNext: "Далее →",
+            quizGetResult: "Получить результат",
+            quizRestart: "Пройти заново",
+            getConsultDiscount: "Получить консультацию со скидкой 10%"
         },
         en: {
             heroBadge: "⚡ Accelerated program 2025–2026",
@@ -571,6 +280,11 @@
             formLi1: "<strong>Chance assessment</strong> — 15 minutes",
             formLi2: "<strong>Assistance in collecting archival documents</strong> (even from closed archives)",
             formLi3: "<strong>350+ successful cases</strong> across Europe and CIS",
+            formNamePlaceholder: "Your name *",
+            formPhonePlaceholder: "Phone number (WhatsApp/Telegram) *",
+            formEmailPlaceholder: "E-mail",
+            formMessagePlaceholder: "What is your current citizenship?",
+            submitBtn: "Get expert consultation →",
             quizBadge: "🎯 Personal assistant",
             quizTitle: "Answer 5 questions — get a <span class='blue-text'>recommendation and 10% discount</span>",
             quizDesc: "It takes less than a minute, the result will help the expert prepare a strategy",
@@ -595,9 +309,21 @@
             ctaDesc: "Leave a request and get an individual action plan from a migration law expert",
             ctaBtn: "Book a consultation",
             footerDesc: "Legal support in matters of Russian citizenship, repatriation and residence permits. More than 10 years of experience.",
+            quizQuestions: [
+                { text: "Your current citizenship?", options: ["Germany / Austria / Switzerland", "Kazakhstan / Belarus / Ukraine", "USA / Canada / France", "Other"] },
+                { text: "Do you or your parents/grandparents have Russian roots?", options: ["Yes, born in RSFSR/RF", "Yes, grandparents from USSR", "No, but spouse is Russian citizen", "No connection"] },
+                { text: "Do you plan to move to Russia in the next six months?", options: ["Already live in Russia", "Yes, actively planning", "Considering moving", "Not sure yet"] },
+                { text: "Have you had any previous refusals of temporary/permanent residence or citizenship?", options: ["Yes, refused", "No, never applied", "Applied but withdrew documents", "In process"] },
+                { text: "Your marital status?", options: ["Married to Russian citizen", "Married to foreigner", "Have children - Russian citizens", "Single"] }
+            ],
             submitAlert: (name) => `Thank you, ${name}! Our specialist will contact you within 15 minutes.`,
             quizResultHigh: "🎉 You have excellent chances! You qualify for the simplified program. Fill out the application, and we will prepare the documents.",
-            quizResultLow: "📌 Even in difficult situations, we can help. Leave a request for a personal analysis from a lawyer."
+            quizResultLow: "📌 Even in difficult situations, we can help. Leave a request for a personal analysis from a lawyer.",
+            quizBack: "◀ Back",
+            quizNext: "Next →",
+            quizGetResult: "Get result",
+            quizRestart: "Restart quiz",
+            getConsultDiscount: "Get consultation with 10% discount"
         },
         de: {
             heroBadge: "⚡ Beschleunigtes Programm 2025–2026",
@@ -616,6 +342,11 @@
             formLi1: "<strong>Chancenbewertung</strong> — 15 Minuten",
             formLi2: "<strong>Hilfe bei der Beschaffung von Archivdokumenten</strong> (auch aus geschlossenen Archiven)",
             formLi3: "<strong>Über 350 erfolgreiche Fälle</strong> in ganz Europa und der GUS",
+            formNamePlaceholder: "Ihr Name *",
+            formPhonePlaceholder: "Telefonnummer (WhatsApp/Telegram) *",
+            formEmailPlaceholder: "E-Mail",
+            formMessagePlaceholder: "Was ist Ihre aktuelle Staatsbürgerschaft?",
+            submitBtn: "Expertenberatung erhalten →",
             quizBadge: "🎯 Persönlicher Assistent",
             quizTitle: "Beantworten Sie 5 Fragen — erhalten Sie eine <span class='blue-text'>Empfehlung und 10% Rabatt</span>",
             quizDesc: "Es dauert weniger als eine Minute, das Ergebnis hilft dem Experten bei der Strategieerstellung",
@@ -640,15 +371,41 @@
             ctaDesc: "Hinterlassen Sie eine Anfrage und erhalten Sie einen individuellen Aktionsplan von einem Experten für Migrationsrecht",
             ctaBtn: "Beratung buchen",
             footerDesc: "Rechtliche Unterstützung bei Fragen der russischen Staatsbürgerschaft, Repatriierung und Aufenthaltserlaubnis. Mehr als 10 Jahre Erfahrung.",
+            quizQuestions: [
+                { text: "Ihre aktuelle Staatsbürgerschaft?", options: ["Deutschland / Österreich / Schweiz", "Kasachstan / Belarus / Ukraine", "USA / Kanada / Frankreich", "Andere"] },
+                { text: "Haben Sie oder Ihre Eltern/Großeltern russische Wurzeln?", options: ["Ja, geboren in RSFSR/RF", "Ja, Großeltern aus UdSSR", "Nein, aber Ehepartner russischer Staatsbürger", "Keine Verbindung"] },
+                { text: "Planen Sie einen Umzug nach Russland in den nächsten sechs Monaten?", options: ["Lebt bereits in Russland", "Ja, aktiv geplant", "Umzug wird erwogen", "Noch nicht sicher"] },
+                { text: "Gab es frühere Ablehnungen der Aufenthaltserlaubnis/Staatsbürgerschaft?", options: ["Ja, abgelehnt", "Nein, nie beantragt", "Beantragt, aber zurückgezogen", "Im Prozess"] },
+                { text: "Ihr Familienstand?", options: ["Verheiratet mit russischem Staatsbürger", "Verheiratet mit Ausländer", "Habe Kinder - russische Staatsbürger", "Ledig"] }
+            ],
             submitAlert: (name) => `Danke, ${name}! Unser Spezialist wird Sie innerhalb von 15 Minuten kontaktieren.`,
             quizResultHigh: "🎉 Sie haben ausgezeichnete Chancen! Sie qualifizieren sich für das vereinfachte Programm. Füllen Sie den Antrag aus, und wir bereiten die Dokumente vor.",
-            quizResultLow: "📌 Auch in schwierigen Situationen helfen wir. Hinterlassen Sie eine Anfrage für eine persönliche Analyse durch einen Anwalt."
+            quizResultLow: "📌 Auch in schwierigen Situationen helfen wir. Hinterlassen Sie eine Anfrage für eine persönliche Analyse durch einen Anwalt.",
+            quizBack: "◀ Zurück",
+            quizNext: "Weiter →",
+            quizGetResult: "Ergebnis",
+            quizRestart: "Quiz wiederholen",
+            getConsultDiscount: "Beratung mit 10% Rabatt"
         }
     };
 
     let currentLang = 'ru';
+    let currentStep = 0;
+    let userAnswers = new Array(5).fill(null);
+    let quizData = null;
 
-    function updateLanguage(lang) {
+    function updateFormPlaceholders(t) {
+        document.getElementById('inputName').placeholder = t.formNamePlaceholder;
+        document.getElementById('inputPhone').placeholder = t.formPhonePlaceholder;
+        document.getElementById('inputEmail').placeholder = t.formEmailPlaceholder;
+        document.getElementById('inputMessage').placeholder = t.formMessagePlaceholder;
+        document.getElementById('submitFormBtn').innerHTML = t.submitBtn;
+        document.getElementById('consultBtnHeader').innerHTML = t.submitBtn.split('→')[0] || "Бесплатная консультация";
+        document.getElementById('quizBtnMain').innerHTML = t.quizBadge.split(' ')[0] + " → 1 minute";
+        document.getElementById('requestBtnMain').innerHTML = t.formNamePlaceholder.split('*')[0] || "Оставить заявку";
+    }
+
+    function updatePageLanguage(lang) {
         currentLang = lang;
         const t = translations[lang];
         document.getElementById('heroBadge').innerHTML = t.heroBadge;
@@ -672,80 +429,45 @@
         document.getElementById('ctaBtn').innerHTML = t.ctaBtn;
         document.getElementById('footerDesc').innerHTML = t.footerDesc;
         
-        // benefits grid
+        updateFormPlaceholders(t);
+        
         let benefitsHtml = '';
-        t.benefits.forEach(b => {
-            benefitsHtml += `<div class="benefit-card"><i class="bi ${b.icon}"></i><h3>${b.title}</h3><p>${b.text}</p></div>`;
-        });
+        t.benefits.forEach(b => { benefitsHtml += `<div class="benefit-card"><i class="bi ${b.icon}"></i><h3>${b.title}</h3><p>${b.text}</p></div>`; });
         document.getElementById('benefitsGrid').innerHTML = benefitsHtml;
         
-        // categories grid
         let catsHtml = '';
-        t.categories.forEach(c => {
-            catsHtml += `<div class="col-md-6 col-lg-4"><div class="category-card"><i class="bi ${c.icon}"></i><div><h3>${c.title}</h3><p class="text-secondary">${c.text}</p></div></div></div>`;
-        });
+        t.categories.forEach(c => { catsHtml += `<div class="col-md-6 col-lg-4"><div class="category-card"><i class="bi ${c.icon}"></i><div><h3>${c.title}</h3><p class="text-secondary">${c.text}</p></div></div></div>`; });
         document.getElementById('categoryGrid').innerHTML = catsHtml;
         
-        // reviews grid
         let revHtml = '';
-        t.reviews.forEach(r => {
-            revHtml += `<div class="review-card"><i class="bi bi-quote"></i><p>${r.text}</p><strong>${r.author}</strong></div>`;
-        });
+        t.reviews.forEach(r => { revHtml += `<div class="review-card"><i class="bi bi-quote"></i><p>${r.text}</p><strong>${r.author}</strong></div>`; });
         document.getElementById('reviewsGrid').innerHTML = revHtml;
-    }
-
-    // языковые кнопки
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            updateLanguage(btn.dataset.lang);
-        });
-    });
-    updateLanguage('ru');
-
-    // динамический заголовок из URL
-    (function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        let userQuery = urlParams.get('utm_term') || urlParams.get('q') || urlParams.get('keyword') || '';
-        if(userQuery && userQuery.length < 90) {
-            let decoded = decodeURIComponent(userQuery);
-            if(decoded) document.getElementById('dynamicHeadline').innerHTML = decoded + '<br><span class="blue-text">оформление гражданства РФ под ключ</span>';
-        }
-    })();
-
-    // ========== КВИЗ (независимая логика) ==========
-    const quizQuestions = [
-        { id: 0, textRu: "Ваше текущее гражданство?", textEn: "Your current citizenship?", textDe: "Ihre aktuelle Staatsbürgerschaft?", options: ["Германия / Австрия / Швейцария", "Казахстан / Беларусь / Украина", "США / Канада / Франция", "Другое"] },
-        { id: 1, textRu: "Есть ли у вас или родителей/дедушек российские корни?", textEn: "Do you or your parents/grandparents have Russian roots?", textDe: "Haben Sie oder Ihre Eltern/Großeltern russische Wurzeln?", options: ["Да, родились в РСФСР/РФ", "Да, бабушка/дедушка из СССР", "Нет, но супруг(а) гражданин РФ", "Нет никакой связи"] },
-        { id: 2, textRu: "Планируете переезд в РФ в ближайшие полгода?", textEn: "Do you plan to move to Russia in the next six months?", textDe: "Planen Sie einen Umzug nach Russland in den nächsten sechs Monaten?", options: ["Уже живу в РФ", "Да, активно планирую", "Рассматриваю вариант", "Пока не определился"] },
-        { id: 3, textRu: "Были ли ранее отказы в РВП/ВНЖ/гражданстве?", textEn: "Have you had any previous refusals of temporary/permanent residence or citizenship?", textDe: "Gab es frühere Ablehnungen der Aufenthaltserlaubnis/Staatsbürgerschaft?", options: ["Да, был отказ", "Нет, не обращался", "Обращался, но забрал документы", "В процессе"] },
-        { id: 4, textRu: "Ваш семейный статус?", textEn: "Your marital status?", textDe: "Ihr Familienstand?", options: ["Женат/замужем за гражданином РФ", "Женат/замужем за иностранцем", "Есть дети-граждане РФ", "Холост/не замужем"] }
-    ];
-    let currentStep = 0;
-    let userAnswers = new Array(quizQuestions.length).fill(null);
-
-    function getQuestionText(q) {
-        if(currentLang === 'en') return q.textEn;
-        if(currentLang === 'de') return q.textDe;
-        return q.textRu;
+        
+        quizData = t.quizQuestions;
+        currentStep = 0;
+        userAnswers.fill(null);
+        renderQuiz();
     }
 
     function renderQuiz() {
         const container = document.getElementById('quizContainer');
+        const resultDiv = document.getElementById('quizResult');
         if(!container) return;
-        if(currentStep < quizQuestions.length) {
-            const q = quizQuestions[currentStep];
-            let html = `<div class="quiz-question">${currentStep+1}. ${getQuestionText(q)}</div>`;
-            q.options.forEach((opt, idx) => {
+        resultDiv.classList.add('d-none');
+        if(currentStep < 5 && quizData) {
+            const q = quizData[currentStep];
+            let html = `<div class="quiz-question">${currentStep+1}. ${q.text}</div>`;
+            q.options.forEach((opt) => {
                 const isSelected = (userAnswers[currentStep] === opt);
                 html += `<div class="quiz-option ${isSelected ? 'selected' : ''}" data-value="${opt.replace(/"/g, '&quot;')}">
                             <i class="bi ${isSelected ? 'bi-check-circle-fill' : 'bi-circle'}"></i> ${opt}
                          </div>`;
             });
+            const t = translations[currentLang];
+            const nextText = (currentStep === 4) ? t.quizGetResult : t.quizNext;
             html += `<div class="mt-4 d-flex justify-content-between">
-                        <button class="btn btn-outline-secondary rounded-pill px-4" id="quizPrevBtn" ${currentStep===0 ? 'disabled' : ''}>◀ ${currentLang === 'en' ? 'Back' : (currentLang === 'de' ? 'Zurück' : 'Назад')}</button>
-                        <button class="btn btn-primary rounded-pill px-5" id="quizNextBtn">${currentStep === quizQuestions.length-1 ? (currentLang === 'en' ? 'Get result' : (currentLang === 'de' ? 'Ergebnis' : 'Получить результат')) : (currentLang === 'en' ? 'Next →' : (currentLang === 'de' ? 'Weiter →' : 'Далее →'))}</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-4" id="quizPrevBtn" ${currentStep===0 ? 'disabled' : ''}>${t.quizBack}</button>
+                        <button class="btn btn-primary rounded-pill px-5" id="quizNextBtn">${nextText}</button>
                      </div>`;
             container.innerHTML = html;
             document.querySelectorAll('.quiz-option').forEach(el => {
@@ -757,8 +479,12 @@
             });
             document.getElementById('quizPrevBtn')?.addEventListener('click', () => { if(currentStep > 0) { currentStep--; renderQuiz(); } });
             document.getElementById('quizNextBtn')?.addEventListener('click', () => {
-                if(userAnswers[currentStep] === null) { alert(currentLang === 'en' ? "Please select an answer" : (currentLang === 'de' ? "Bitte wählen Sie eine Antwort" : "Выберите вариант ответа")); return; }
-                if(currentStep === quizQuestions.length-1) finishQuiz();
+                if(userAnswers[currentStep] === null) {
+                    const t = translations[currentLang];
+                    alert(t.formNamePlaceholder.includes('имя') ? "Выберите вариант ответа" : (currentLang === 'en' ? "Please select an answer" : "Bitte wählen Sie eine Antwort"));
+                    return;
+                }
+                if(currentStep === 4) finishQuiz();
                 else { currentStep++; renderQuiz(); }
             });
         }
@@ -766,34 +492,53 @@
 
     function finishQuiz() {
         let score = 0;
-        if(userAnswers[0] && (userAnswers[0].includes("Германия") || userAnswers[0].includes("Казахстан"))) score++;
-        if(userAnswers[1] && (userAnswers[1].includes("родились") || userAnswers[1].includes("бабушка"))) score+=2;
-        if(userAnswers[2] && (userAnswers[2].includes("живу") || userAnswers[2].includes("активно"))) score++;
-        if(userAnswers[3] && userAnswers[3].includes("Нет")) score++;
+        if(userAnswers[0] && (userAnswers[0].includes("Германия") || userAnswers[0].includes("Germany") || userAnswers[0].includes("Deutschland"))) score++;
+        if(userAnswers[1] && (userAnswers[1].includes("родились") || userAnswers[1].includes("born") || userAnswers[1].includes("geboren"))) score+=2;
+        if(userAnswers[2] && (userAnswers[2].includes("живу") || userAnswers[2].includes("live") || userAnswers[2].includes("lebt"))) score++;
+        if(userAnswers[3] && (userAnswers[3].includes("Нет") || userAnswers[3].includes("No") || userAnswers[3].includes("Nein"))) score++;
         const t = translations[currentLang];
         let resultMsg = (score >= 3) ? t.quizResultHigh : t.quizResultLow;
         const container = document.getElementById('quizContainer');
         const resultDiv = document.getElementById('quizResult');
         container.innerHTML = "";
         resultDiv.classList.remove('d-none');
-        resultDiv.innerHTML = `<div class="fs-5 fw-semibold">${resultMsg}</div><div class="mt-4"><a href="#quickForm" class="btn btn-primary">${currentLang === 'en' ? 'Get consultation with 10% discount' : (currentLang === 'de' ? 'Beratung mit 10% Rabatt' : 'Получить консультацию со скидкой 10%')}</a> <button class="btn btn-outline-secondary ms-2" id="restartQuiz">${currentLang === 'en' ? 'Restart quiz' : (currentLang === 'de' ? 'Quiz wiederholen' : 'Пройти заново')}</button></div>`;
-        document.getElementById('restartQuiz')?.addEventListener('click', () => { currentStep = 0; userAnswers.fill(null); resultDiv.classList.add('d-none'); renderQuiz(); });
+        resultDiv.innerHTML = `<div class="fs-5 fw-semibold">${resultMsg}</div><div class="mt-4"><a href="#quickForm" class="btn btn-primary">${t.getConsultDiscount}</a> <button class="btn btn-outline-secondary ms-2" id="restartQuiz">${t.quizRestart}</button></div>`;
+        document.getElementById('restartQuiz')?.addEventListener('click', () => { currentStep = 0; userAnswers.fill(null); renderQuiz(); });
     }
 
-    // Отправка заявки (НЕ зависит от квиза)
+    // динамический заголовок из URL
+    (function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let userQuery = urlParams.get('utm_term') || urlParams.get('q') || urlParams.get('keyword') || '';
+        if(userQuery && userQuery.length < 90) {
+            let decoded = decodeURIComponent(userQuery);
+            if(decoded) document.getElementById('dynamicHeadline').innerHTML = decoded + '<br><span class="blue-text">оформление гражданства РФ под ключ</span>';
+        }
+    })();
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updatePageLanguage(btn.dataset.lang);
+        });
+    });
+    
+    updatePageLanguage('ru');
+
     document.getElementById('leadForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
-        let name = e.target.querySelector('input[name="name"]').value;
-        let phone = e.target.querySelector('input[name="phone"]').value;
+        let name = document.getElementById('inputName').value;
+        let phone = document.getElementById('inputPhone').value;
         if(name && phone) {
             alert(translations[currentLang].submitAlert(name));
             e.target.reset();
         } else {
-            alert(currentLang === 'en' ? "Please fill in name and phone" : (currentLang === 'de' ? "Bitte Name und Telefon ausfüllen" : "Пожалуйста, заполните имя и телефон"));
+            const t = translations[currentLang];
+            alert(t.formNamePlaceholder.includes('имя') ? "Пожалуйста, заполните имя и телефон" : (currentLang === 'en' ? "Please fill in name and phone" : "Bitte Name und Telefon ausfüllen"));
         }
     });
 
-    renderQuiz();
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const hash = this.getAttribute('href');
