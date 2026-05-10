@@ -62,9 +62,9 @@
         }
         /* Иерархия заголовков */
         h1 {
-            font-size: 3.2rem;
+            font-size: 2.6rem;
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.25;
             margin-bottom: 1.5rem;
             letter-spacing: -0.02em;
         }
@@ -135,11 +135,62 @@
             margin-bottom: 2rem;
             max-width: 90%;
         }
+        
+        /* Блок с фото, стрелкой-дугой и подписью */
+        .hero-image-wrapper {
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
         .hero-image {
             border-radius: 48px;
             box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
             max-width: 100%;
             height: auto;
+            display: block;
+        }
+        .expert-arrow {
+            position: absolute;
+            bottom: -20px;
+            right: -30px;
+            width: 160px;
+            cursor: default;
+            z-index: 5;
+        }
+        .expert-label {
+            position: absolute;
+            bottom: 55px;
+            right: -75px;
+            background: #155dfc;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(21,93,252,0.3);
+            z-index: 6;
+            font-family: 'Inter', sans-serif;
+        }
+        .expert-label::before {
+            content: '';
+            position: absolute;
+            left: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 6px 12px 6px 0;
+            border-color: transparent #155dfc transparent transparent;
+        }
+        @media (max-width: 992px) {
+            .expert-arrow { width: 100px; right: -10px; bottom: -10px; }
+            .expert-label { font-size: 0.7rem; padding: 5px 12px; right: -40px; bottom: 40px; white-space: nowrap; }
+        }
+        @media (max-width: 768px) {
+            .expert-arrow { width: 70px; right: 5px; bottom: -5px; }
+            .expert-label { font-size: 0.65rem; padding: 4px 10px; right: -15px; bottom: 28px; }
         }
         
         /* Преимущества */
@@ -193,7 +244,7 @@
             height: 100%;
         }
         
-        /* ОТЗЫВЫ — СЕТКА 4 КОЛОНКИ, БЕЗ СТРЕЛОК И КНОПОК */
+        /* ОТЗЫВЫ — СЕТКА 4 КОЛОНКИ */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -325,13 +376,14 @@
         }
         @media (max-width: 768px) {
             body { padding-top: 80px; }
-            h1 { font-size: 2.2rem; }
+            h1 { font-size: 1.8rem; }
             h2, .block-title { font-size: 1.8rem; }
             .form-section, .quiz-section { padding: 32px 24px; margin: 50px 0; }
             .hero-landing { margin-bottom: 40px; padding: 50px 0; }
             .benefits-grid { margin: 50px 0; gap: 24px; }
             .reviews-grid { grid-template-columns: 1fr; gap: 20px; }
             .footer-links { flex-direction: column; gap: 12px; }
+            .expert-label { white-space: nowrap; font-size: 0.6rem; right: -10px; bottom: 20px; }
         }
     </style>
 </head>
@@ -343,14 +395,14 @@
 </div>
 <button id="scrollToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up-short"></i></button>
 
-<!-- ФИКСИРОВАННАЯ ШАПКА С ЛОГОТИПОМ ИЗ ПАПКИ -->
+<!-- ФИКСИРОВАННАЯ ШАПКА С ЛОГОТИПОМ logo.png -->
 <header>
     <div class="header-top">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <div class="logo">
-                    <!-- лого из папки проекта logo.svg -->
-                    <img src="logo.svg" alt="РМС Консалтинг Сервис" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23155dfc\' rx=\'20\'/%3E%3Ctext x=\'24\' y=\'70\' fill=\'white\' font-size=\'52\' font-weight=\'bold\'%3ERP%3C/text%3E%3C/svg%3E'">
+                    <!-- лого из папки проекта logo.png (без заглушек) -->
+                    <img src="logo.png" alt="РМС Консалтинг Сервис">
                     <span>РМС Консалтинг Сервис</span>
                 </div>
                 <div>
@@ -362,7 +414,7 @@
 </header>
 
 <main>
-    <!-- Hero блок с картинкой hero.png -->
+    <!-- Hero блок с динамическим заголовком (2 строки, уменьшен кегль) + фото с дугой и подписью -->
     <div class="hero-landing">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -376,8 +428,17 @@
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center">
-                    <!-- картинка hero.png из папки проекта -->
-                    <img src="hero.png" alt="Гражданство РФ" class="hero-image" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 400 320\'%3E%3Crect width=\'400\' height=\'320\' fill=\'%23eef4ff\' rx=\'40\'/%3E%3Ctext x=\'80\' y=\'170\' fill=\'%23155dfc\' font-size=\'34\' font-weight=\'bold\'%3EПаспорт РФ%3C/text%3E%3C/svg%3E'">
+                    <div class="hero-image-wrapper">
+                        <!-- картинка hero.png из папки проекта -->
+                        <img src="hero.png" alt="Эксперт по гражданству РФ" class="hero-image">
+                        <!-- Стрелка-дуга (SVG) и подпись -->
+                        <svg class="expert-arrow" viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M140 15 C100 -10 30 5 20 45 C12 75 35 95 55 90" stroke="#155dfc" stroke-width="3" stroke-dasharray="6 4" fill="none" stroke-linecap="round"/>
+                            <polygon points="145,12 138,7 138,17" fill="#155dfc"/>
+                            <polygon points="58,90 52,84 50,94" fill="#155dfc"/>
+                        </svg>
+                        <div class="expert-label">Элеонора — Эксперт по гражданству РФ</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -467,7 +528,7 @@
             </div>
         </div>
 
-        <!-- БЛОК ОТЗЫВОВ: 4 отзыва, всегда видны, БЕЗ стрелок и точек (простая сетка) -->
+        <!-- БЛОК ОТЗЫВОВ: 4 отзыва, всегда видны, без стрелок и точек -->
         <div style="margin: 90px 0 60px;">
             <h2 class="text-center">Реальные <span class="blue-text">истории наших клиентов</span></h2>
             <p class="text-center text-secondary mb-5">Более 350 семей уже переехали в РФ с нашей помощью</p>
@@ -510,7 +571,7 @@
         <div class="row gy-4 align-items-start">
             <div class="col-md-5">
                 <div class="logo mb-3" style="color:white; filter: brightness(0) invert(1);">
-                    <img src="logo.svg" alt="РМС" style="height: 48px; width: auto;" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 100 100\'%3E%3Crect width=\'100\' height=\'100\' fill=\'%23ffffff\' rx=\'20\'/%3E%3Ctext x=\'24\' y=\'70\' fill=\'%23155dfc\' font-size=\'52\' font-weight=\'bold\'%3ERP%3C/text%3E%3C/svg%3E'">
+                    <img src="logo.png" alt="РМС" style="height: 48px; width: auto;">
                     <span style="color:white;">РМС Консалтинг Сервис</span>
                 </div>
                 <p class="small opacity-75">Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.</p>
