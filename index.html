@@ -260,7 +260,7 @@
             border-radius: 40px;
             text-align: center;
         }
-        /* Футер */
+        /* Футер — улучшенные стили для ровного отображения */
         .footer {
             background: #0f1a2c;
             color: #cddcf0;
@@ -272,20 +272,75 @@
             color: #ffffff;
             text-decoration: none;
             opacity: 0.85;
+            transition: opacity 0.2s;
+        }
+        .footer a:hover {
+            opacity: 1;
+            text-decoration: underline;
         }
         .footer-links {
             display: flex;
-            gap: 32px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-links a {
+            display: inline-block;
         }
         .footer-address {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 8px;
-            align-items: center;
         }
-        .footer-address span {
-            white-space: nowrap;
+        .footer-address-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .footer-address-item i {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .footer-address-item span {
+            line-height: 1.4;
+        }
+        .footer-contacts {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .footer-contacts-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-contacts-item i {
+            font-size: 1.1rem;
+            width: 20px;
+        }
+        .footer-copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+        @media (min-width: 768px) {
+            .footer-links {
+                flex-direction: row;
+                gap: 32px;
+            }
+            .footer-address {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 16px 24px;
+            }
+            .footer-address-item {
+                align-items: center;
+            }
+            .footer-copyright {
+                text-align: left;
+            }
         }
         .scroll-soc-media {
             position: fixed;
@@ -328,9 +383,6 @@
             h1 { font-size: 1.8rem; }
             .form-section, .quiz-section { padding: 32px 24px; margin: 50px 0; }
             .reviews-grid { grid-template-columns: 1fr; }
-            .footer-links { flex-direction: column; gap: 12px; }
-            .footer-address { flex-direction: column; align-items: flex-start; }
-            .footer-address span { white-space: normal; }
         }
     </style>
 </head>
@@ -486,16 +538,19 @@
     </div>
 </main>
 
-<!-- Футер: лого без подложки, адрес в одну строку -->
+<!-- Футер: аккуратный, ровный, без смещений -->
 <footer class="footer">
     <div class="container">
-        <div class="row gy-4 align-items-start">
+        <div class="row gy-5">
+            <!-- Колонка 1: Лого и описание -->
             <div class="col-md-5">
                 <div class="logo mb-3" style="filter: none;">
                     <img src="logo.png" alt="РМС" style="height: 48px; width: auto;">
                 </div>
-                <p class="small opacity-75">Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.</p>
+                <p class="small opacity-75" style="max-width: 90%;">Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.</p>
             </div>
+            
+            <!-- Колонка 2: Ссылки -->
             <div class="col-md-4">
                 <div class="footer-links">
                     <a href="#">Политика конфиденциальности</a>
@@ -503,14 +558,35 @@
                     <a href="#">Карта сайта</a>
                 </div>
             </div>
-            <div class="col-md-3 text-md-end">
-                <div class="footer-address">
-                    <i class="bi bi-geo-alt-fill me-2"></i>
-                    <span>Deutschland, Diez, Zuckmayer Str. 6, 65582</span>
+            
+            <!-- Колонка 3: Контакты и адреса -->
+            <div class="col-md-3">
+                <div class="footer-contacts">
+                    <div class="footer-contacts-item">
+                        <i class="bi bi-envelope-fill"></i>
+                        <a href="mailto:info@russian-status.com">info@russian-status.com</a>
+                    </div>
+                    <div class="footer-address">
+                        <div class="footer-address-item">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Deutschland, Diez, Zuckmayer Str. 6, 65582</span>
+                        </div>
+                        <div class="footer-address-item">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Deutschland, Papenburg, Friederikenstraße 72, 26871</span>
+                        </div>
+                        <div class="footer-address-item">
+                            <i class="bi bi-geo-alt-fill"></i>
+                            <span>Deutschland, Ludwigsburg, Danziger Str. 53, 71638</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-2"><i class="bi bi-envelope-fill me-2"></i> info@russian-status.com</div>
-                <div class="mt-2 small opacity-50">© 2026 РМС Консалтинг Сервис</div>
             </div>
+        </div>
+        
+        <!-- Копирайт отдельной строкой -->
+        <div class="footer-copyright">
+            © 2026 РМС Консалтинг Сервис. Все права защищены.
         </div>
     </div>
 </footer>
