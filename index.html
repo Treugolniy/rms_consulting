@@ -22,7 +22,7 @@
             color: #1E2A3E;
             line-height: 1.5;
             scroll-behavior: smooth;
-            padding-top: 98px;
+            padding-top: 88px;
         }
         .container {
             max-width: 1280px;
@@ -60,7 +60,31 @@
             background: #155dfc;
             color: white;
         }
-        /* Иерархия заголовков */
+        /* Языковой переключатель */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: #f0f4fa;
+            padding: 4px;
+            border-radius: 60px;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #4a5a72;
+        }
+        .lang-btn.active {
+            background: #155dfc;
+            color: white;
+            box-shadow: 0 2px 8px rgba(21,93,252,0.2);
+        }
+        /* Заголовки */
         h1 {
             font-size: 2.6rem;
             font-weight: 800;
@@ -79,14 +103,7 @@
             font-weight: 600;
             margin-bottom: 1rem;
         }
-        .block-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        
-        /* ========== ФИКСИРОВАННАЯ ШАПКА ========== */
+        /* Шапка фикс */
         .header-top {
             position: fixed;
             top: 0;
@@ -95,27 +112,23 @@
             background: white;
             border-bottom: 1px solid #eef2f8;
             box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
-            padding: 18px 0;
+            padding: 14px 0;
             z-index: 1030;
         }
         .logo {
             display: flex;
             align-items: center;
             gap: 14px;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #1E2A3E;
         }
         .logo img {
-            height: 52px;
+            height: 48px;
             width: auto;
-            border-radius: 12px;
+            border-radius: 10px;
         }
-        
-        /* Герой — увеличенные отступы */
+        /* Hero */
         .hero-landing {
             background: linear-gradient(135deg, #F9FbFF 0%, #ffffff 100%);
-            padding: 80px 0 70px;
+            padding: 70px 0 60px;
             border-bottom: 1px solid #eef2f8;
             margin-bottom: 80px;
         }
@@ -135,8 +148,6 @@
             margin-bottom: 2rem;
             max-width: 90%;
         }
-        
-        /* Блок с фото, стрелкой-дугой и подписью */
         .hero-image-wrapper {
             position: relative;
             display: inline-block;
@@ -149,18 +160,10 @@
             height: auto;
             display: block;
         }
-        .expert-arrow {
-            position: absolute;
-            bottom: -20px;
-            right: -30px;
-            width: 160px;
-            cursor: default;
-            z-index: 5;
-        }
         .expert-label {
             position: absolute;
-            bottom: 55px;
-            right: -75px;
+            bottom: 25px;
+            right: -20px;
             background: #155dfc;
             color: white;
             padding: 8px 18px;
@@ -170,7 +173,6 @@
             white-space: nowrap;
             box-shadow: 0 4px 12px rgba(21,93,252,0.3);
             z-index: 6;
-            font-family: 'Inter', sans-serif;
         }
         .expert-label::before {
             content: '';
@@ -178,21 +180,13 @@
             left: -12px;
             top: 50%;
             transform: translateY(-50%);
-            width: 0;
-            height: 0;
             border-style: solid;
             border-width: 6px 12px 6px 0;
             border-color: transparent #155dfc transparent transparent;
         }
         @media (max-width: 992px) {
-            .expert-arrow { width: 100px; right: -10px; bottom: -10px; }
-            .expert-label { font-size: 0.7rem; padding: 5px 12px; right: -40px; bottom: 40px; white-space: nowrap; }
+            .expert-label { font-size: 0.7rem; padding: 5px 12px; right: -10px; bottom: 15px; white-space: nowrap; }
         }
-        @media (max-width: 768px) {
-            .expert-arrow { width: 70px; right: 5px; bottom: -5px; }
-            .expert-label { font-size: 0.65rem; padding: 4px 10px; right: -15px; bottom: 28px; }
-        }
-        
         /* Преимущества */
         .benefits-grid {
             display: grid;
@@ -206,7 +200,6 @@
             padding: 36px 24px;
             text-align: center;
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
-            transition: all 0.2s;
             border: 1px solid #edf2f7;
         }
         .benefit-card i {
@@ -214,7 +207,6 @@
             color: #155dfc;
             margin-bottom: 24px;
         }
-        
         /* Формы */
         .form-section {
             background: #F9FbFF;
@@ -243,8 +235,7 @@
             border: 1px solid #edf2f9;
             height: 100%;
         }
-        
-        /* ОТЗЫВЫ — СЕТКА 4 КОЛОНКИ */
+        /* Отзывы 4 колонки */
         .reviews-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -257,8 +248,6 @@
             padding: 28px 24px;
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.04);
             border: 1px solid #edf2f7;
-            transition: 0.2s;
-            height: 100%;
         }
         .review-card i.bi-quote {
             font-size: 2rem;
@@ -267,20 +256,7 @@
             margin-bottom: 16px;
             display: inline-block;
         }
-        .review-card p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: #2c3e50;
-            margin: 12px 0 16px;
-        }
-        .review-card strong {
-            font-weight: 700;
-            color: #1E2A3E;
-            display: block;
-            margin-top: 12px;
-        }
-        
-        /* Квиз стили */
+        /* Квиз */
         .quiz-question {
             font-size: 1.8rem;
             font-weight: 700;
@@ -308,7 +284,6 @@
             border-radius: 40px;
             text-align: center;
         }
-        
         /* Футер */
         .footer {
             background: #0f1a2c;
@@ -322,17 +297,11 @@
             text-decoration: none;
             opacity: 0.85;
         }
-        .footer a:hover {
-            opacity: 1;
-            text-decoration: underline;
-        }
         .footer-links {
             display: flex;
             gap: 32px;
             flex-wrap: wrap;
         }
-        
-        /* Фиксированные кнопки соцсетей */
         .scroll-soc-media {
             position: fixed;
             bottom: 130px;
@@ -364,26 +333,18 @@
             color: white;
             font-size: 28px;
             z-index: 99;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
             cursor: pointer;
         }
-        
         @media (max-width: 1100px) {
-            .reviews-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 24px;
-            }
+            .reviews-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
-            body { padding-top: 80px; }
+            body { padding-top: 75px; }
             h1 { font-size: 1.8rem; }
-            h2, .block-title { font-size: 1.8rem; }
             .form-section, .quiz-section { padding: 32px 24px; margin: 50px 0; }
-            .hero-landing { margin-bottom: 40px; padding: 50px 0; }
-            .benefits-grid { margin: 50px 0; gap: 24px; }
-            .reviews-grid { grid-template-columns: 1fr; gap: 20px; }
+            .reviews-grid { grid-template-columns: 1fr; }
             .footer-links { flex-direction: column; gap: 12px; }
-            .expert-label { white-space: nowrap; font-size: 0.6rem; right: -10px; bottom: 20px; }
+            .lang-btn { padding: 5px 12px; font-size: 0.75rem; }
         }
     </style>
 </head>
@@ -395,18 +356,21 @@
 </div>
 <button id="scrollToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="bi bi-arrow-up-short"></i></button>
 
-<!-- ФИКСИРОВАННАЯ ШАПКА С ЛОГОТИПОМ logo.png -->
+<!-- Хедер: только лого + кнопка + переключатель языков (без дублирования названия) -->
 <header>
     <div class="header-top">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <div class="logo">
-                    <!-- лого из папки проекта logo.png (без заглушек) -->
                     <img src="logo.png" alt="РМС Консалтинг Сервис">
-                    <span>РМС Консалтинг Сервис</span>
                 </div>
-                <div>
-                    <a href="#quickForm" class="btn btn-primary">Бесплатная консультация</a>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" data-lang="ru">RU</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="de">DE</button>
+                    </div>
+                    <a href="#quickForm" class="btn btn-primary" id="consultBtnHeader">Бесплатная консультация</a>
                 </div>
             </div>
         </div>
@@ -414,30 +378,23 @@
 </header>
 
 <main>
-    <!-- Hero блок с динамическим заголовком (2 строки, уменьшен кегль) + фото с дугой и подписью -->
+    <!-- Hero блок -->
     <div class="hero-landing">
         <div class="container">
             <div class="row align-items-center g-5">
                 <div class="col-lg-7">
-                    <div class="hero-badge">⚡ Ускоренная программа 2025–2026</div>
+                    <div class="hero-badge" id="heroBadge">⚡ Ускоренная программа 2025–2026</div>
                     <h1 id="dynamicHeadline">Упрощённое гражданство РФ<br><span class="blue-text">без отказа от второго паспорта</span></h1>
-                    <p class="hero-sub">Не требуются: 5 лет ВНЖ, экзамен по русскому языку, знание истории России. Оформление под ключ с гарантией.</p>
+                    <p class="hero-sub" id="heroSub">Не требуются: 5 лет ВНЖ, экзамен по русскому языку, знание истории России. Оформление под ключ с гарантией.</p>
                     <div class="d-flex flex-wrap gap-3">
-                        <a href="#quizFormBlock" class="btn btn-primary">Пройдите квиз → 1 минута</a>
-                        <a href="#quickForm" class="btn btn-outline-primary-custom">Оставить заявку</a>
+                        <a href="#quizFormBlock" class="btn btn-primary" id="quizBtnMain">Пройдите квиз → 1 минута</a>
+                        <a href="#quickForm" class="btn btn-outline-primary-custom" id="requestBtnMain">Оставить заявку</a>
                     </div>
                 </div>
                 <div class="col-lg-5 d-none d-lg-block text-center">
                     <div class="hero-image-wrapper">
-                        <!-- картинка hero.png из папки проекта -->
                         <img src="hero.png" alt="Эксперт по гражданству РФ" class="hero-image">
-                        <!-- Стрелка-дуга (SVG) и подпись -->
-                        <svg class="expert-arrow" viewBox="0 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M140 15 C100 -10 30 5 20 45 C12 75 35 95 55 90" stroke="#155dfc" stroke-width="3" stroke-dasharray="6 4" fill="none" stroke-linecap="round"/>
-                            <polygon points="145,12 138,7 138,17" fill="#155dfc"/>
-                            <polygon points="58,90 52,84 50,94" fill="#155dfc"/>
-                        </svg>
-                        <div class="expert-label">Элеонора — Эксперт по гражданству РФ</div>
+                        <div class="expert-label" id="expertLabel">Элеонора — Эксперт по гражданству РФ</div>
                     </div>
                 </div>
             </div>
@@ -447,44 +404,41 @@
     <div class="container">
         <!-- Преимущества -->
         <div style="margin: 20px 0 10px;">
-            <h2 class="text-center">Почему<span class="blue-text"> упрощённое гражданство</span> доступно уже сейчас</h2>
-            <p class="text-center text-secondary mb-5">На основании Постановления №169 и Указа Президента №962</p>
+            <h2 class="text-center" id="benefitsTitle">Почему <span class="blue-text">упрощённое гражданство</span> доступно уже сейчас</h2>
+            <p class="text-center text-secondary mb-5" id="benefitsSub">На основании Постановления №169 и Указа Президента №962</p>
         </div>
-        <div class="benefits-grid">
-            <div class="benefit-card"><i class="bi bi-file-check"></i><h3>Без 5 лет ВНЖ</h3><p>Отмена обязательного постоянного проживания перед подачей заявления</p></div>
-            <div class="benefit-card"><i class="bi bi-translate"></i><h3>Без экзамена</h3><p>Не нужно сдавать тесты по русскому языку и истории России</p></div>
-            <div class="benefit-card"><i class="bi bi-globe2"></i><h3>Двойное гражданство</h3><p>Разрешено сохранить паспорт Германии, США, Казахстана и др.</p></div>
-            <div class="benefit-card"><i class="bi bi-clock-history"></i><h3>Срок от 20 дней</h3><p>Законный срок рассмотрения заявки — минимальный в практике</p></div>
+        <div class="benefits-grid" id="benefitsGrid">
+            <!-- динамически через js -->
         </div>
 
         <!-- БЫСТРАЯ ЗАЯВКА -->
         <div id="quickForm" class="form-section">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h2 class="text-md-start" style="text-align:left;">Получите <span class="blue-text">бесплатную консультацию</span></h2>
-                    <p class="mb-3 fs-5">Миграционный эксперт РМС оценит вашу ситуацию и подберет оптимальный путь к гражданству РФ.</p>
+                    <h2 class="text-md-start" style="text-align:left;" id="formTitle">Получите <span class="blue-text">бесплатную консультацию</span></h2>
+                    <p class="mb-3 fs-5" id="formDesc">Миграционный эксперт РМС оценит вашу ситуацию и подберет оптимальный путь к гражданству РФ.</p>
                     <ul class="list-unstyled mt-4">
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Оценка шансов</strong> — 15 минут</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Помощь в сборе архивных справок</strong> (даже из закрытых архивов)</li>
-                        <li class="mb-2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Более 350+ успешных кейсов</strong> по всей Европе и СНГ</li>
+                        <li class="mb-2" id="formLi1"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Оценка шансов</strong> — 15 минут</li>
+                        <li class="mb-2" id="formLi2"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Помощь в сборе архивных справок</strong> (даже из закрытых архивов)</li>
+                        <li class="mb-2" id="formLi3"><i class="bi bi-check-circle-fill text-primary me-2"></i> <strong>Более 350+ успешных кейсов</strong> по всей Европе и СНГ</li>
                     </ul>
                 </div>
                 <div class="col-md-6">
                     <form id="leadForm" action="#" method="post">
                         <div class="mb-3">
-                            <input type="text" class="form-control" name="name" placeholder="Ваше имя *" required>
+                            <input type="text" class="form-control" name="name" placeholder="Ваше имя *" id="inputName" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" class="form-control" name="phone" placeholder="Номер телефона (WhatsApp/Telegram) *" required>
+                            <input type="tel" class="form-control" name="phone" placeholder="Номер телефона (WhatsApp/Telegram) *" id="inputPhone" required>
                         </div>
                         <div class="mb-3">
-                            <input type="email" class="form-control" name="email" placeholder="E-mail">
+                            <input type="email" class="form-control" name="email" placeholder="E-mail" id="inputEmail">
                         </div>
                         <div class="mb-4">
-                            <textarea class="form-control" rows="2" name="message" placeholder="Какое у вас сейчас гражданство?"></textarea>
+                            <textarea class="form-control" rows="2" name="message" placeholder="Какое у вас сейчас гражданство?" id="inputMessage"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary w-100 py-3 fw-semibold">Получить консультацию эксперта →</button>
-                        <div class="mt-3 small text-secondary text-center">Нажимая на кнопку, вы соглашаетесь с <a href="#" class="text-decoration-none">политикой обработки данных</a></div>
+                        <button type="submit" class="btn btn-primary w-100 py-3 fw-semibold" id="submitFormBtn">Получить консультацию эксперта →</button>
+                        <div class="mt-3 small text-secondary text-center"><a href="#" id="privacyLink">Политика конфиденциальности</a></div>
                     </form>
                 </div>
             </div>
@@ -493,9 +447,9 @@
         <!-- КВИЗ блок -->
         <div id="quizFormBlock" class="quiz-section">
             <div class="text-center mb-4">
-                <span class="hero-badge bg-light" style="background:#eef4ff;">🎯 Персональный помощник</span>
-                <h2 class="mt-3">Ответьте на 5 вопросов — получите <span class="blue-text">рекомендацию и скидку 10%</span></h2>
-                <p class="text-secondary">Это займёт меньше минуты, результат поможет эксперту подготовить стратегию</p>
+                <span class="hero-badge bg-light" style="background:#eef4ff;" id="quizBadge">🎯 Персональный помощник</span>
+                <h2 class="mt-3" id="quizTitle">Ответьте на 5 вопросов — получите <span class="blue-text">рекомендацию и скидку 10%</span></h2>
+                <p class="text-secondary" id="quizDesc">Это займёт меньше минуты, результат поможет эксперту подготовить стратегию</p>
             </div>
             <div id="quizApp">
                 <div id="quizContainer"></div>
@@ -503,84 +457,41 @@
             </div>
         </div>
 
-        <!-- Категории претендентов -->
+        <!-- Категории -->
         <div class="category-grid">
-            <h2 class="text-center mb-5">Кто может претендовать на <span class="blue-text">упрощённое гражданство РФ</span></h2>
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4">
-                    <div class="category-card"><i class="bi bi-geo-alt-fill"></i><div><h3>Родившиеся в РСФСР/РФ</h3><p class="text-secondary">Граждане бывших республик СССР, родившиеся на территории России.</p></div></div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="category-card"><i class="bi bi-tree-fill"></i><div><h3>Российские корни</h3><p class="text-secondary">Наличие прямых родственников (родители, бабушки/дедушки) – граждан РФ.</p></div></div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="category-card"><i class="bi bi-people-fill"></i><div><h3>Брак с гражданином РФ</h3><p class="text-secondary">Официальный брак не менее 3 лет / совместные дети.</p></div></div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="category-card"><i class="bi bi-file-person-fill"></i><div><h3>Участники госпрограмм</h3><p class="text-secondary">Программа переселения соотечественников, контракт с Минобороны.</p></div></div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="category-card"><i class="bi bi-flag-fill"></i><div><h3>Граждане Беларуси, Казахстана</h3><p class="text-secondary">Особый льготный порядок получения российского паспорта.</p></div></div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="category-card"><i class="bi bi-shield-check"></i><div><h3>Носители русского языка</h3><p class="text-secondary">Упрощенная процедура без постоянного проживания.</p></div></div>
-                </div>
-            </div>
+            <h2 class="text-center mb-5" id="categoryTitle">Кто может претендовать на <span class="blue-text">упрощённое гражданство РФ</span></h2>
+            <div class="row g-4" id="categoryGrid"></div>
         </div>
 
-        <!-- БЛОК ОТЗЫВОВ: 4 отзыва, всегда видны, без стрелок и точек -->
+        <!-- Отзывы 4 шт -->
         <div style="margin: 90px 0 60px;">
-            <h2 class="text-center">Реальные <span class="blue-text">истории наших клиентов</span></h2>
-            <p class="text-center text-secondary mb-5">Более 350 семей уже переехали в РФ с нашей помощью</p>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <i class="bi bi-quote"></i>
-                    <p>«Получил паспорт РФ за 2,5 месяца без экзаменов, сохранил немецкое гражданство. Очень благодарен команде РМС!»</p>
-                    <strong>— Томас, Германия</strong>
-                </div>
-                <div class="review-card">
-                    <i class="bi bi-quote"></i>
-                    <p>«Сложная ситуация с архивами в Казахстане, но юристы нашли все документы. Гражданство получили всей семьёй за 4 месяца.»</p>
-                    <strong>— Елена, Алматы</strong>
-                </div>
-                <div class="review-card">
-                    <i class="bi bi-quote"></i>
-                    <p>«Сотрудничали удалённо из США, консульство в Вашингтоне — эксперты взяли на себя запись и переводы. Результат — готовый загранпаспорт РФ.»</p>
-                    <strong>— Сергей, Чикаго</strong>
-                </div>
-                <div class="review-card">
-                    <i class="bi bi-quote"></i>
-                    <p>«Рекомендую! Получили гражданство за 3 месяца, спасибо за индивидуальный подход и полное юридическое сопровождение.»</p>
-                    <strong>— Анна и Михаил, Берлин</strong>
-                </div>
-            </div>
+            <h2 class="text-center" id="reviewsTitle">Реальные <span class="blue-text">истории наших клиентов</span></h2>
+            <p class="text-center text-secondary mb-5" id="reviewsSub">Более 350 семей уже переехали в РФ с нашей помощью</p>
+            <div class="reviews-grid" id="reviewsGrid"></div>
         </div>
 
-        <!-- Финальный CTA -->
         <div class="text-center bg-light p-5 rounded-4 my-5" style="background: #F6F9FE; margin-bottom: 100px;">
-            <h2 class="fw-bold">Начните процесс уже сегодня</h2>
-            <p class="mb-4 fs-5">Оставьте заявку и получите индивидуальный план действий от эксперта по миграционному праву</p>
-            <a href="#quickForm" class="btn btn-primary btn-lg px-5 py-3">Записаться на консультацию</a>
+            <h2 class="fw-bold" id="ctaTitle">Начните процесс уже сегодня</h2>
+            <p class="mb-4 fs-5" id="ctaDesc">Оставьте заявку и получите индивидуальный план действий от эксперта по миграционному праву</p>
+            <a href="#quickForm" class="btn btn-primary btn-lg px-5 py-3" id="ctaBtn">Записаться на консультацию</a>
         </div>
     </div>
 </main>
 
-<!-- ФУТЕР -->
 <footer class="footer">
     <div class="container">
         <div class="row gy-4 align-items-start">
             <div class="col-md-5">
-                <div class="logo mb-3" style="color:white; filter: brightness(0) invert(1);">
+                <div class="logo mb-3" style="filter: brightness(0) invert(1);">
                     <img src="logo.png" alt="РМС" style="height: 48px; width: auto;">
-                    <span style="color:white;">РМС Консалтинг Сервис</span>
                 </div>
-                <p class="small opacity-75">Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.</p>
+                <p class="small opacity-75" id="footerDesc">Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.</p>
             </div>
             <div class="col-md-4">
                 <div class="footer-links">
-                    <a href="#">Политика конфиденциальности</a>
-                    <a href="#">Согласие на обработку ПД</a>
-                    <a href="#">Карта сайта</a>
+                    <a href="#" id="footerPolicy">Политика конфиденциальности</a>
+                    <a href="#" id="footerConsent">Согласие на обработку ПД</a>
+                    <a href="#" id="footerSitemap">Карта сайта</a>
                 </div>
             </div>
             <div class="col-md-3 text-md-end">
@@ -596,7 +507,204 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Динамический заголовок H1 из параметров (Google Ads)
+    // ========== МУЛЬТИЯЗЫЧНЫЙ КОНТЕНТ ==========
+    const translations = {
+        ru: {
+            heroBadge: "⚡ Ускоренная программа 2025–2026",
+            heroSub: "Не требуются: 5 лет ВНЖ, экзамен по русскому языку, знание истории России. Оформление под ключ с гарантией.",
+            expertLabel: "Элеонора — Эксперт по гражданству РФ",
+            benefitsTitle: "Почему <span class='blue-text'>упрощённое гражданство</span> доступно уже сейчас",
+            benefitsSub: "На основании Постановления №169 и Указа Президента №962",
+            benefits: [
+                { icon: "bi-file-check", title: "Без 5 лет ВНЖ", text: "Отмена обязательного постоянного проживания перед подачей заявления" },
+                { icon: "bi-translate", title: "Без экзамена", text: "Не нужно сдавать тесты по русскому языку и истории России" },
+                { icon: "bi-globe2", title: "Двойное гражданство", text: "Разрешено сохранить паспорт Германии, США, Казахстана и др." },
+                { icon: "bi-clock-history", title: "Срок от 20 дней", text: "Законный срок рассмотрения заявки — минимальный в практике" }
+            ],
+            formTitle: "Получите <span class='blue-text'>бесплатную консультацию</span>",
+            formDesc: "Миграционный эксперт РМС оценит вашу ситуацию и подберет оптимальный путь к гражданству РФ.",
+            formLi1: "<strong>Оценка шансов</strong> — 15 минут",
+            formLi2: "<strong>Помощь в сборе архивных справок</strong> (даже из закрытых архивов)",
+            formLi3: "<strong>Более 350+ успешных кейсов</strong> по всей Европе и СНГ",
+            quizBadge: "🎯 Персональный помощник",
+            quizTitle: "Ответьте на 5 вопросов — получите <span class='blue-text'>рекомендацию и скидку 10%</span>",
+            quizDesc: "Это займёт меньше минуты, результат поможет эксперту подготовить стратегию",
+            categoryTitle: "Кто может претендовать на <span class='blue-text'>упрощённое гражданство РФ</span>",
+            categories: [
+                { icon: "bi-geo-alt-fill", title: "Родившиеся в РСФСР/РФ", text: "Граждане бывших республик СССР, родившиеся на территории России." },
+                { icon: "bi-tree-fill", title: "Российские корни", text: "Наличие прямых родственников (родители, бабушки/дедушки) – граждан РФ." },
+                { icon: "bi-people-fill", title: "Брак с гражданином РФ", text: "Официальный брак не менее 3 лет / совместные дети." },
+                { icon: "bi-file-person-fill", title: "Участники госпрограмм", text: "Программа переселения соотечественников, контракт с Минобороны." },
+                { icon: "bi-flag-fill", title: "Граждане Беларуси, Казахстана", text: "Особый льготный порядок получения российского паспорта." },
+                { icon: "bi-shield-check", title: "Носители русского языка", text: "Упрощенная процедура без постоянного проживания." }
+            ],
+            reviewsTitle: "Реальные <span class='blue-text'>истории наших клиентов</span>",
+            reviewsSub: "Более 350 семей уже переехали в РФ с нашей помощью",
+            reviews: [
+                { text: "«Получил паспорт РФ за 2,5 месяца без экзаменов, сохранил немецкое гражданство. Очень благодарен команде РМС!»", author: "— Томас, Германия" },
+                { text: "«Сложная ситуация с архивами в Казахстане, но юристы нашли все документы. Гражданство получили всей семьёй за 4 месяца.»", author: "— Елена, Алматы" },
+                { text: "«Сотрудничали удалённо из США, консульство в Вашингтоне — эксперты взяли на себя запись и переводы. Результат — готовый загранпаспорт РФ.»", author: "— Сергей, Чикаго" },
+                { text: "«Рекомендую! Получили гражданство за 3 месяца, спасибо за индивидуальный подход и полное юридическое сопровождение.»", author: "— Анна и Михаил, Берлин" }
+            ],
+            ctaTitle: "Начните процесс уже сегодня",
+            ctaDesc: "Оставьте заявку и получите индивидуальный план действий от эксперта по миграционному праву",
+            ctaBtn: "Записаться на консультацию",
+            footerDesc: "Юридическое сопровождение в вопросах гражданства РФ, репатриации и ВНЖ. Более 10 лет опыта.",
+            submitAlert: (name) => `Спасибо, ${name}! Наш специалист свяжется с вами в течение 15 минут.`,
+            quizResultHigh: "🎉 У вас отличные шансы! Вы подходите под упрощённую программу. Заполните заявку, и мы подготовим документы.",
+            quizResultLow: "📌 Даже при сложной ситуации мы поможем. Оставьте заявку для персонального анализа от юриста."
+        },
+        en: {
+            heroBadge: "⚡ Accelerated program 2025–2026",
+            heroSub: "Not required: 5 years of residence permit, Russian language exam, knowledge of Russian history. Turnkey solution with guarantee.",
+            expertLabel: "Eleonora — Expert in Russian Citizenship",
+            benefitsTitle: "Why <span class='blue-text'>simplified citizenship</span> is available now",
+            benefitsSub: "Based on Decree No. 169 and Presidential Decree No. 962",
+            benefits: [
+                { icon: "bi-file-check", title: "No 5 years of residence", text: "Cancellation of mandatory permanent residence before application" },
+                { icon: "bi-translate", title: "No exam", text: "No need to take tests on Russian language and history" },
+                { icon: "bi-globe2", title: "Dual citizenship", text: "Allowed to keep passport of Germany, USA, Kazakhstan, etc." },
+                { icon: "bi-clock-history", title: "From 20 days", text: "Statutory processing time is minimal in practice" }
+            ],
+            formTitle: "Get a <span class='blue-text'>free consultation</span>",
+            formDesc: "RMS migration expert will assess your situation and select the best path to Russian citizenship.",
+            formLi1: "<strong>Chance assessment</strong> — 15 minutes",
+            formLi2: "<strong>Assistance in collecting archival documents</strong> (even from closed archives)",
+            formLi3: "<strong>350+ successful cases</strong> across Europe and CIS",
+            quizBadge: "🎯 Personal assistant",
+            quizTitle: "Answer 5 questions — get a <span class='blue-text'>recommendation and 10% discount</span>",
+            quizDesc: "It takes less than a minute, the result will help the expert prepare a strategy",
+            categoryTitle: "Who can apply for <span class='blue-text'>simplified Russian citizenship</span>",
+            categories: [
+                { icon: "bi-geo-alt-fill", title: "Born in RSFSR/RF", text: "Citizens of former USSR republics born in Russia." },
+                { icon: "bi-tree-fill", title: "Russian roots", text: "Immediate relatives (parents, grandparents) – Russian citizens." },
+                { icon: "bi-people-fill", title: "Marriage to a Russian citizen", text: "Official marriage for at least 3 years / common children." },
+                { icon: "bi-file-person-fill", title: "State program participants", text: "Compatriots resettlement program, contract with Ministry of Defense." },
+                { icon: "bi-flag-fill", title: "Citizens of Belarus, Kazakhstan", text: "Special preferential procedure for obtaining Russian passport." },
+                { icon: "bi-shield-check", title: "Native Russian speakers", text: "Simplified procedure without permanent residence." }
+            ],
+            reviewsTitle: "Real <span class='blue-text'>client stories</span>",
+            reviewsSub: "More than 350 families have already moved to Russia with our help",
+            reviews: [
+                { text: "«I received a Russian passport in 2.5 months without exams, kept my German citizenship. Very grateful to the RMS team!»", author: "— Thomas, Germany" },
+                { text: "«A difficult situation with archives in Kazakhstan, but the lawyers found all the documents. The whole family received citizenship in 4 months.»", author: "— Elena, Almaty" },
+                { text: "«We worked remotely from the USA, the consulate in Washington — experts took care of registration and translations. Result — ready international passport.»", author: "— Sergey, Chicago" },
+                { text: "«I recommend! We received citizenship in 3 months, thanks for individual approach and full legal support.»", author: "— Anna & Mikhail, Berlin" }
+            ],
+            ctaTitle: "Start the process today",
+            ctaDesc: "Leave a request and get an individual action plan from a migration law expert",
+            ctaBtn: "Book a consultation",
+            footerDesc: "Legal support in matters of Russian citizenship, repatriation and residence permits. More than 10 years of experience.",
+            submitAlert: (name) => `Thank you, ${name}! Our specialist will contact you within 15 minutes.`,
+            quizResultHigh: "🎉 You have excellent chances! You qualify for the simplified program. Fill out the application, and we will prepare the documents.",
+            quizResultLow: "📌 Even in difficult situations, we can help. Leave a request for a personal analysis from a lawyer."
+        },
+        de: {
+            heroBadge: "⚡ Beschleunigtes Programm 2025–2026",
+            heroSub: "Nicht erforderlich: 5 Jahre Aufenthaltserlaubnis, Russisch-Sprachprüfung, Kenntnisse der russischen Geschichte. Schlüsselfertige Lösung mit Garantie.",
+            expertLabel: "Eleonora — Expertin für russische Staatsbürgerschaft",
+            benefitsTitle: "Warum die <span class='blue-text'>vereinfachte Staatsbürgerschaft</span> jetzt verfügbar ist",
+            benefitsSub: "Basierend auf Verordnung Nr. 169 und Präsidialdekret Nr. 962",
+            benefits: [
+                { icon: "bi-file-check", title: "Keine 5 Jahre Aufenthalt", text: "Abschaffung des obligatorischen ständigen Wohnsitzes vor Antragstellung" },
+                { icon: "bi-translate", title: "Keine Prüfung", text: "Keine Tests in russischer Sprache und Geschichte erforderlich" },
+                { icon: "bi-globe2", title: "Doppelte Staatsbürgerschaft", text: "Behalt des Passes Deutschlands, der USA, Kasachstans usw. erlaubt" },
+                { icon: "bi-clock-history", title: "Ab 20 Tagen", text: "Gesetzliche Bearbeitungszeit ist in der Praxis minimal" }
+            ],
+            formTitle: "Kostenlose <span class='blue-text'>Beratung</span> erhalten",
+            formDesc: "Der Migrationsexperte von RMS bewertet Ihre Situation und wählt den optimalen Weg zur russischen Staatsbürgerschaft.",
+            formLi1: "<strong>Chancenbewertung</strong> — 15 Minuten",
+            formLi2: "<strong>Hilfe bei der Beschaffung von Archivdokumenten</strong> (auch aus geschlossenen Archiven)",
+            formLi3: "<strong>Über 350 erfolgreiche Fälle</strong> in ganz Europa und der GUS",
+            quizBadge: "🎯 Persönlicher Assistent",
+            quizTitle: "Beantworten Sie 5 Fragen — erhalten Sie eine <span class='blue-text'>Empfehlung und 10% Rabatt</span>",
+            quizDesc: "Es dauert weniger als eine Minute, das Ergebnis hilft dem Experten bei der Strategieerstellung",
+            categoryTitle: "Wer kann die <span class='blue-text'>vereinfachte russische Staatsbürgerschaft</span> beantragen",
+            categories: [
+                { icon: "bi-geo-alt-fill", title: "In der RSFSR/RF geboren", text: "Bürger ehemaliger Sowjetrepubliken, geboren in Russland." },
+                { icon: "bi-tree-fill", title: "Russische Wurzeln", text: "Vorhandensein direkter Verwandter (Eltern, Großeltern) - russische Staatsbürger." },
+                { icon: "bi-people-fill", title: "Heirat mit russischem Staatsbürger", text: "Offizielle Ehe seit mindestens 3 Jahren / gemeinsame Kinder." },
+                { icon: "bi-file-person-fill", title: "Teilnehmer von Landesprogrammen", text: "Umsiedlungsprogramm für Landsleute, Vertrag mit dem Verteidigungsministerium." },
+                { icon: "bi-flag-fill", title: "Bürger von Belarus, Kasachstan", text: "Besonderes Vorzugsverfahren für russischen Pass." },
+                { icon: "bi-shield-check", title: "Muttersprachler Russisch", text: "Vereinfachtes Verfahren ohne ständigen Wohnsitz." }
+            ],
+            reviewsTitle: "Echte <span class='blue-text'>Kundenerfahrungen</span>",
+            reviewsSub: "Mehr als 350 Familien sind bereits mit unserer Hilfe nach Russland gezogen",
+            reviews: [
+                { text: "«Ich erhielt den russischen Pass in 2,5 Monaten ohne Prüfungen, behielt die deutsche Staatsbürgerschaft. Sehr dankbar dem RMS-Team!»", author: "— Thomas, Deutschland" },
+                { text: "«Eine schwierige Situation mit Archiven in Kasachstan, aber die Anwälte fanden alle Dokumente. Die ganze Familie erhielt die Staatsbürgerschaft in 4 Monaten.»", author: "— Elena, Almaty" },
+                { text: "«Wir arbeiteten aus den USA, das Konsulat in Washington — Experten übernahmen die Terminvereinbarung und Übersetzungen. Ergebnis — fertiger Reisepass.»", author: "— Sergey, Chicago" },
+                { text: "«Absolute Empfehlung! Wir erhielten die Staatsbürgerschaft in 3 Monaten, danke für die individuelle Betreuung und vollständige rechtliche Unterstützung.»", author: "— Anna & Mikhail, Berlin" }
+            ],
+            ctaTitle: "Starten Sie noch heute den Prozess",
+            ctaDesc: "Hinterlassen Sie eine Anfrage und erhalten Sie einen individuellen Aktionsplan von einem Experten für Migrationsrecht",
+            ctaBtn: "Beratung buchen",
+            footerDesc: "Rechtliche Unterstützung bei Fragen der russischen Staatsbürgerschaft, Repatriierung und Aufenthaltserlaubnis. Mehr als 10 Jahre Erfahrung.",
+            submitAlert: (name) => `Danke, ${name}! Unser Spezialist wird Sie innerhalb von 15 Minuten kontaktieren.`,
+            quizResultHigh: "🎉 Sie haben ausgezeichnete Chancen! Sie qualifizieren sich für das vereinfachte Programm. Füllen Sie den Antrag aus, und wir bereiten die Dokumente vor.",
+            quizResultLow: "📌 Auch in schwierigen Situationen helfen wir. Hinterlassen Sie eine Anfrage für eine persönliche Analyse durch einen Anwalt."
+        }
+    };
+
+    let currentLang = 'ru';
+
+    function updateLanguage(lang) {
+        currentLang = lang;
+        const t = translations[lang];
+        document.getElementById('heroBadge').innerHTML = t.heroBadge;
+        document.getElementById('heroSub').innerHTML = t.heroSub;
+        document.getElementById('expertLabel').innerHTML = t.expertLabel;
+        document.getElementById('benefitsTitle').innerHTML = t.benefitsTitle;
+        document.getElementById('benefitsSub').innerHTML = t.benefitsSub;
+        document.getElementById('formTitle').innerHTML = t.formTitle;
+        document.getElementById('formDesc').innerHTML = t.formDesc;
+        document.getElementById('formLi1').innerHTML = t.formLi1;
+        document.getElementById('formLi2').innerHTML = t.formLi2;
+        document.getElementById('formLi3').innerHTML = t.formLi3;
+        document.getElementById('quizBadge').innerHTML = t.quizBadge;
+        document.getElementById('quizTitle').innerHTML = t.quizTitle;
+        document.getElementById('quizDesc').innerHTML = t.quizDesc;
+        document.getElementById('categoryTitle').innerHTML = t.categoryTitle;
+        document.getElementById('reviewsTitle').innerHTML = t.reviewsTitle;
+        document.getElementById('reviewsSub').innerHTML = t.reviewsSub;
+        document.getElementById('ctaTitle').innerHTML = t.ctaTitle;
+        document.getElementById('ctaDesc').innerHTML = t.ctaDesc;
+        document.getElementById('ctaBtn').innerHTML = t.ctaBtn;
+        document.getElementById('footerDesc').innerHTML = t.footerDesc;
+        
+        // benefits grid
+        let benefitsHtml = '';
+        t.benefits.forEach(b => {
+            benefitsHtml += `<div class="benefit-card"><i class="bi ${b.icon}"></i><h3>${b.title}</h3><p>${b.text}</p></div>`;
+        });
+        document.getElementById('benefitsGrid').innerHTML = benefitsHtml;
+        
+        // categories grid
+        let catsHtml = '';
+        t.categories.forEach(c => {
+            catsHtml += `<div class="col-md-6 col-lg-4"><div class="category-card"><i class="bi ${c.icon}"></i><div><h3>${c.title}</h3><p class="text-secondary">${c.text}</p></div></div></div>`;
+        });
+        document.getElementById('categoryGrid').innerHTML = catsHtml;
+        
+        // reviews grid
+        let revHtml = '';
+        t.reviews.forEach(r => {
+            revHtml += `<div class="review-card"><i class="bi bi-quote"></i><p>${r.text}</p><strong>${r.author}</strong></div>`;
+        });
+        document.getElementById('reviewsGrid').innerHTML = revHtml;
+    }
+
+    // языковые кнопки
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            updateLanguage(btn.dataset.lang);
+        });
+    });
+    updateLanguage('ru');
+
+    // динамический заголовок из URL
     (function() {
         const urlParams = new URLSearchParams(window.location.search);
         let userQuery = urlParams.get('utm_term') || urlParams.get('q') || urlParams.get('keyword') || '';
@@ -606,36 +714,42 @@
         }
     })();
 
-    // Квиз данные
+    // ========== КВИЗ (независимая логика) ==========
     const quizQuestions = [
-        { id: 0, text: "Ваше текущее гражданство?", options: ["Германия / Австрия / Швейцария", "Казахстан / Беларусь / Украина", "США / Канада / Франция", "Другое (Латвия, Литва, Израиль и пр.)"] },
-        { id: 1, text: "Есть ли у вас или ваших родителей/дедушек российские корни?", options: ["Да, я или родители родились в РСФСР/РФ", "Да, бабушка/дедушка из СССР", "Нет, но супруг(а) гражданин РФ", "Нет, никакой связи"] },
-        { id: 2, text: "Планируете ли вы переезд в РФ в ближайшие полгода?", options: ["Уже живу в РФ", "Да, активно планирую", "Рассматриваю вариант переезда", "Пока не определился"] },
-        { id: 3, text: "Были ли у вас ранее отказы в оформлении РВП/ВНЖ/гражданства?", options: ["Да, был отказ", "Нет, не обращался", "Обращался, но забрал документы", "В процессе получения ВНЖ"] },
-        { id: 4, text: "Какой у вас семейный статус?", options: ["Женат/замужем за гражданином РФ", "Женат/замужем за иностранцем", "Не замужем / не женат, есть дети-граждане РФ", "Холост/не замужем"] }
+        { id: 0, textRu: "Ваше текущее гражданство?", textEn: "Your current citizenship?", textDe: "Ihre aktuelle Staatsbürgerschaft?", options: ["Германия / Австрия / Швейцария", "Казахстан / Беларусь / Украина", "США / Канада / Франция", "Другое"] },
+        { id: 1, textRu: "Есть ли у вас или родителей/дедушек российские корни?", textEn: "Do you or your parents/grandparents have Russian roots?", textDe: "Haben Sie oder Ihre Eltern/Großeltern russische Wurzeln?", options: ["Да, родились в РСФСР/РФ", "Да, бабушка/дедушка из СССР", "Нет, но супруг(а) гражданин РФ", "Нет никакой связи"] },
+        { id: 2, textRu: "Планируете переезд в РФ в ближайшие полгода?", textEn: "Do you plan to move to Russia in the next six months?", textDe: "Planen Sie einen Umzug nach Russland in den nächsten sechs Monaten?", options: ["Уже живу в РФ", "Да, активно планирую", "Рассматриваю вариант", "Пока не определился"] },
+        { id: 3, textRu: "Были ли ранее отказы в РВП/ВНЖ/гражданстве?", textEn: "Have you had any previous refusals of temporary/permanent residence or citizenship?", textDe: "Gab es frühere Ablehnungen der Aufenthaltserlaubnis/Staatsbürgerschaft?", options: ["Да, был отказ", "Нет, не обращался", "Обращался, но забрал документы", "В процессе"] },
+        { id: 4, textRu: "Ваш семейный статус?", textEn: "Your marital status?", textDe: "Ihr Familienstand?", options: ["Женат/замужем за гражданином РФ", "Женат/замужем за иностранцем", "Есть дети-граждане РФ", "Холост/не замужем"] }
     ];
     let currentStep = 0;
     let userAnswers = new Array(quizQuestions.length).fill(null);
+
+    function getQuestionText(q) {
+        if(currentLang === 'en') return q.textEn;
+        if(currentLang === 'de') return q.textDe;
+        return q.textRu;
+    }
 
     function renderQuiz() {
         const container = document.getElementById('quizContainer');
         if(!container) return;
         if(currentStep < quizQuestions.length) {
             const q = quizQuestions[currentStep];
-            let html = `<div class="quiz-question">${currentStep+1}. ${q.text}</div>`;
-            q.options.forEach((opt) => {
+            let html = `<div class="quiz-question">${currentStep+1}. ${getQuestionText(q)}</div>`;
+            q.options.forEach((opt, idx) => {
                 const isSelected = (userAnswers[currentStep] === opt);
                 html += `<div class="quiz-option ${isSelected ? 'selected' : ''}" data-value="${opt.replace(/"/g, '&quot;')}">
                             <i class="bi ${isSelected ? 'bi-check-circle-fill' : 'bi-circle'}"></i> ${opt}
                          </div>`;
             });
             html += `<div class="mt-4 d-flex justify-content-between">
-                        <button class="btn btn-outline-secondary rounded-pill px-4" id="quizPrevBtn" ${currentStep===0 ? 'disabled' : ''}>◀ Назад</button>
-                        <button class="btn btn-primary rounded-pill px-5" id="quizNextBtn">${currentStep === quizQuestions.length-1 ? 'Получить результат' : 'Далее →'}</button>
+                        <button class="btn btn-outline-secondary rounded-pill px-4" id="quizPrevBtn" ${currentStep===0 ? 'disabled' : ''}>◀ ${currentLang === 'en' ? 'Back' : (currentLang === 'de' ? 'Zurück' : 'Назад')}</button>
+                        <button class="btn btn-primary rounded-pill px-5" id="quizNextBtn">${currentStep === quizQuestions.length-1 ? (currentLang === 'en' ? 'Get result' : (currentLang === 'de' ? 'Ergebnis' : 'Получить результат')) : (currentLang === 'en' ? 'Next →' : (currentLang === 'de' ? 'Weiter →' : 'Далее →'))}</button>
                      </div>`;
             container.innerHTML = html;
             document.querySelectorAll('.quiz-option').forEach(el => {
-                el.addEventListener('click', (e) => {
+                el.addEventListener('click', () => {
                     const val = el.getAttribute('data-value');
                     userAnswers[currentStep] = val;
                     renderQuiz();
@@ -643,7 +757,7 @@
             });
             document.getElementById('quizPrevBtn')?.addEventListener('click', () => { if(currentStep > 0) { currentStep--; renderQuiz(); } });
             document.getElementById('quizNextBtn')?.addEventListener('click', () => {
-                if(userAnswers[currentStep] === null) { alert("Выберите вариант ответа"); return; }
+                if(userAnswers[currentStep] === null) { alert(currentLang === 'en' ? "Please select an answer" : (currentLang === 'de' ? "Bitte wählen Sie eine Antwort" : "Выберите вариант ответа")); return; }
                 if(currentStep === quizQuestions.length-1) finishQuiz();
                 else { currentStep++; renderQuiz(); }
             });
@@ -656,27 +770,30 @@
         if(userAnswers[1] && (userAnswers[1].includes("родились") || userAnswers[1].includes("бабушка"))) score+=2;
         if(userAnswers[2] && (userAnswers[2].includes("живу") || userAnswers[2].includes("активно"))) score++;
         if(userAnswers[3] && userAnswers[3].includes("Нет")) score++;
-        let resultMsg = (score >= 3) ? "🎉 У вас отличные шансы! Вы подходите под упрощённую программу. Заполните заявку, и мы подготовим документы." : "📌 Даже при сложной ситуации мы поможем. Оставьте заявку для персонального анализа от юриста.";
+        const t = translations[currentLang];
+        let resultMsg = (score >= 3) ? t.quizResultHigh : t.quizResultLow;
         const container = document.getElementById('quizContainer');
         const resultDiv = document.getElementById('quizResult');
         container.innerHTML = "";
         resultDiv.classList.remove('d-none');
-        resultDiv.innerHTML = `<div class="fs-5 fw-semibold">${resultMsg}</div><div class="mt-4"><a href="#quickForm" class="btn btn-primary">Получить консультацию со скидкой 10%</a> <button class="btn btn-outline-secondary ms-2" id="restartQuiz">Пройти заново</button></div>`;
+        resultDiv.innerHTML = `<div class="fs-5 fw-semibold">${resultMsg}</div><div class="mt-4"><a href="#quickForm" class="btn btn-primary">${currentLang === 'en' ? 'Get consultation with 10% discount' : (currentLang === 'de' ? 'Beratung mit 10% Rabatt' : 'Получить консультацию со скидкой 10%')}</a> <button class="btn btn-outline-secondary ms-2" id="restartQuiz">${currentLang === 'en' ? 'Restart quiz' : (currentLang === 'de' ? 'Quiz wiederholen' : 'Пройти заново')}</button></div>`;
         document.getElementById('restartQuiz')?.addEventListener('click', () => { currentStep = 0; userAnswers.fill(null); resultDiv.classList.add('d-none'); renderQuiz(); });
     }
 
-    // Отправка заявки
+    // Отправка заявки (НЕ зависит от квиза)
     document.getElementById('leadForm')?.addEventListener('submit', (e) => {
         e.preventDefault();
         let name = e.target.querySelector('input[name="name"]').value;
         let phone = e.target.querySelector('input[name="phone"]').value;
-        if(name && phone) alert(`Спасибо, ${name}! Наш специалист свяжется с вами в течение 15 минут.`);
-        else alert("Пожалуйста, заполните имя и телефон");
+        if(name && phone) {
+            alert(translations[currentLang].submitAlert(name));
+            e.target.reset();
+        } else {
+            alert(currentLang === 'en' ? "Please fill in name and phone" : (currentLang === 'de' ? "Bitte Name und Telefon ausfüllen" : "Пожалуйста, заполните имя и телефон"));
+        }
     });
 
     renderQuiz();
-
-    // плавный скролл по якорям
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const hash = this.getAttribute('href');
